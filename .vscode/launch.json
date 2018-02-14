@@ -1,0 +1,29 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "chrome",
+      "request": "launch",
+      "name": "Launch Chrome",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch via Yarn",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": [
+        "run",
+        "debug"
+      ],
+      "port": 9229
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Debug",
+      "configurations": ["Launch via Yarn", "Launch Chrome"]
+    }
+  ]
+}

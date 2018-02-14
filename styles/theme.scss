@@ -1,0 +1,13 @@
+$color: #08182b;
+$background-color: #fff;
+$link-color: #45d9fd;
+
+body {
+  color: $color;
+  background-color: $background-color;
+  padding: 16px;
+}
+
+a {
+  color: $link-color;
+}
