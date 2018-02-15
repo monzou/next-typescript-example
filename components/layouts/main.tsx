@@ -33,7 +33,7 @@ const MainLayout: React.SFC<{}> = (props: MainLayoutProps) => {
           </dt>
           <dd>Redux Container Page</dd>
           <dt>
-            <Link as={'/stories/16311462'} href={'/redux-story?id=16311462'}>
+            <Link as={'/stories/16311462'} href={'/story?id=16311462'}>
               <a>Next.js 5.0 @ HN</a>
             </Link>
           </dt>

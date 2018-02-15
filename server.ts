@@ -10,14 +10,15 @@ app.prepare().then(() => {
   const server = express()
 
   server.get('/stories/:id', (req, res) => {
-    const actualPage = '/redux-story'
-    const queryParams = { id: req.params.id }
-    app.render(req, res, actualPage, queryParams)
+    app.render(req, res, '/story', {
+      id: req.params.id
+    })
   })
 
   server.get('/status', (_, res) => {
-    const result = { status: 'online' }
-    return res.json(result)
+    return res.json({
+      status: 'active'
+    })
   })
 
   server.get('*', (req, res) => {

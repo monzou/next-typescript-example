@@ -21,13 +21,20 @@ export default reducerWithInitialState(INITIAL_STATE)
       draft.error = payload.error
     })
   })
+  .case(showTopStories.started, (state, _) => {
+    return produce(state, draft => {
+      draft.loading = true
+    })
+  })
   .case(showTopStories.done, (state, payload) => {
     return produce(state, draft => {
+      draft.loading = false
       draft.ids = payload.result
     })
   })
   .case(showTopStories.failed, (state, payload) => {
     return produce(state, draft => {
+      draft.loading = false
       draft.error = payload.error
     })
   })

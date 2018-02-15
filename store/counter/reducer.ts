@@ -16,13 +16,35 @@ export default reducerWithInitialState(INITIAL_STATE)
       draft.counter = state.counter - delta
     })
   })
+  .case(incrementAsync.started, (state, _) => {
+    return produce(state, draft => {
+      draft.loading = true
+    })
+  })
   .case(incrementAsync.done, (state, payload) => {
     return produce(state, draft => {
       draft.counter = state.counter + payload.result
+      draft.loading = false
+    })
+  })
+  .case(incrementAsync.failed, (state, _) => {
+    return produce(state, draft => {
+      draft.loading = false
+    })
+  })
+  .case(decrementAsync.started, (state, _) => {
+    return produce(state, draft => {
+      draft.loading = true
     })
   })
   .case(decrementAsync.done, (state, payload) => {
     return produce(state, draft => {
       draft.counter = state.counter - payload.result
+      draft.loading = false
+    })
+  })
+  .case(decrementAsync.failed, (state, _) => {
+    return produce(state, draft => {
+      draft.loading = false
     })
   })

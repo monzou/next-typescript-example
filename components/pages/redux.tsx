@@ -22,7 +22,7 @@ export const Redux: React.SFC<ReduxProps> = (props: ReduxProps) => {
   return (
     <MainLayout>
       <div>
-        <h2>Counter {counter.counter}</h2>
+        <h2>Counter {counter.loading ? 'Loading ...' : counter.counter}</h2>
         <h3>Sync Actions</h3>
         <section>
           <button onClick={() => actions.increment(3)}>Increment 3</button>
