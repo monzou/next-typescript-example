@@ -1,6 +1,7 @@
 import Head from 'next/head'
-import Link from 'next/link'
 import * as React from 'react'
+// @ts-ignore
+import { Link } from '../../routes'
 import '../../styles/theme.scss'
 
 interface MainLayoutProps {
@@ -21,19 +22,19 @@ const MainLayout: React.SFC<{}> = (props: MainLayoutProps) => {
       <nav>
         <dl>
           <dt>
-            <Link href={'/'}>
+            <Link prefetch route="index">
               <a>Index</a>
             </Link>
           </dt>
           <dd>React Component Page</dd>
           <dt>
-            <Link href={'/redux'}>
+            <Link prefetch route="redux">
               <a>Redux</a>
             </Link>
           </dt>
           <dd>Redux Container Page</dd>
           <dt>
-            <Link as={'/stories/16311462'} href={'/story?id=16311462'}>
+            <Link prefetch route="story" id="16311462">
               <a>Next.js 5.0 @ HN</a>
             </Link>
           </dt>
