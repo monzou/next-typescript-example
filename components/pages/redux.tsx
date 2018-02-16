@@ -8,7 +8,7 @@ export interface ReduxActions {
   decrement(delta: number)
   incrementAsync()
   decrementAsync()
-  showStoryAsync(id: number)
+  fetchStoryAsync(id: number)
 }
 
 export interface ReduxProps {
@@ -44,7 +44,7 @@ export const Redux: React.SFC<ReduxProps> = (props: ReduxProps) => {
         <ul>
           {stories.ids.map(id => {
             return (
-              <li key={`story-id-${id}`} onClick={() => actions.showStoryAsync(id)}>
+              <li key={`story-id-${id}`} onClick={() => actions.fetchStoryAsync(id)}>
                 {id}
               </li>
             )

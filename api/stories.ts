@@ -10,15 +10,15 @@ export interface Story {
   score: number
 }
 
-export function getTopStoriesIds(): Promise<number[]> {
+export function fetchTopStoryIds(): Promise<number[]> {
   return request('GET', HOST, 'topstories.json')
 }
 
-export async function getTopStories(limit: number = 5): Promise<Story[]> {
-  const ids = await getTopStoriesIds()
-  return Promise.all(ids.slice(0, limit).map(id => getStory(id)))
+export async function fetchTopStories(limit: number = 5): Promise<Story[]> {
+  const ids = await fetchTopStoryIds()
+  return Promise.all(ids.slice(0, limit).map(id => fetchStory(id)))
 }
 
-export function getStory(id: number): Promise<Story> {
+export function fetchStory(id: number): Promise<Story> {
   return request('GET', HOST, `item/${id}.json`)
 }

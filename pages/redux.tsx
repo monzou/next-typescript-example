@@ -2,14 +2,14 @@ import withRedux from 'next-redux-wrapper'
 import RootState from 'store/root-state'
 import * as API from '../api/stories'
 import { initialProps } from '../components/pages/hoc'
-import { Redux, ReduxProps } from '../components/pages/redux'
+import { Redux, ReduxActions, ReduxProps } from '../components/pages/redux'
 import { CounterAction, decrement, decrementAsync, increment, incrementAsync } from '../store/counter/actions'
 import { initializeStore } from '../store/index'
-import { showStory, showTopStories, StoriesAction } from '../store/stories/actions'
+import { fetchStory, fetchTopStories, StoriesAction } from '../store/stories/actions'
 
 type ReduxAction = CounterAction | StoriesAction
 
-class ReduxActionDispatcher {
+class ReduxActionDispatcher implements ReduxActions {
   private dispatch: (action: ReduxAction) => void
   constructor(dispatch: (action: ReduxAction) => void) {
     this.dispatch = dispatch
@@ -64,19 +64,19 @@ class ReduxActionDispatcher {
       )
     }
   }
-  public async showStoryAsync(id: number) {
-    this.dispatch(showStory.started(id))
+  public async fetchStoryAsync(id: number) {
+    this.dispatch(fetchStory.started(id))
     try {
-      const story = await API.getStory(id)
+      const story = await API.fetchStory(id)
       this.dispatch(
-        showStory.done({
+        fetchStory.done({
           params: id,
           result: story
         })
       )
     } catch (e) {
       this.dispatch(
-        showStory.failed({
+        fetchStory.failed({
           params: id,
           error: e.message
         })
@@ -102,9 +102,9 @@ const enhance = initialProps<ReduxProps>(async ({ store, isServer }) => {
   if (isServer) {
     store.dispatch(increment({ delta: 5 }))
   }
-  const ids = (await API.getTopStoriesIds()).slice(0, 5)
+  const ids = (await API.fetchTopStoryIds()).slice(0, 5)
   store.dispatch(
-    showTopStories.done({
+    fetchTopStories.done({
       params: {},
       result: ids
     })

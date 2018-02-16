@@ -4,7 +4,7 @@ import * as API from '../api/stories'
 import { initialProps } from '../components/pages/hoc'
 import { Story, StoryProps } from '../components/pages/story'
 import { initializeStore } from '../store/index'
-import { showStory } from '../store/stories/actions'
+import { fetchStory } from '../store/stories/actions'
 
 const mapStateToProps = ({ stories }: RootState) => {
   return {
@@ -14,9 +14,9 @@ const mapStateToProps = ({ stories }: RootState) => {
 
 const enhance = initialProps<StoryProps>(async ({ query, store, asPath }) => {
   const id = query.id as number
-  const story = await API.getStory(id)
+  const story = await API.fetchStory(id)
   store.dispatch(
-    showStory.done({
+    fetchStory.done({
       params: id,
       result: story
     })
