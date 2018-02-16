@@ -1,5 +1,4 @@
 const Router = require('nextjs-dynamic-routes')
-const Link = require('next/link')
 
 const router = new Router()
 
