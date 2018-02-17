@@ -51,6 +51,10 @@
     ms "2.1.1"
     update-notifier "2.3.0"
 
+"@zeit/next-bundle-analyzer@^0.0.2":
+  version "0.0.2"
+  resolved "https://registry.yarnpkg.com/@zeit/next-bundle-analyzer/-/next-bundle-analyzer-0.0.2.tgz#d4ed3780adc40f29990da4a80e0e9750d5306e5e"
+
 "@zeit/next-css@^0.0.6":
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/@zeit/next-css/-/next-css-0.0.6.tgz#2b518404dc7f65dc1f619f7012eac3d0e2c9eb6c"

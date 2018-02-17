@@ -4,7 +4,7 @@
   "description": "Example app using Next.js 5 with Typescript",
   "scripts": {
     "clean": "rimraf .next",
-    "analyze": "cross-env ANALYZE=1 yarn run build",
+    "analyze": "cross-env ANALYZE=all yarn run build",
     "dev": "yarn run build:next && cross-env NODE_ENV=development nodemon server.ts -p $PORT",
     "debug": "yarn run build:next && cross-env NODE_ENV=development nodemon --inspect server.ts -p $PORT",
     "build": "yarn run clean && yarn run build:next && yarn run build:server",
@@ -46,6 +46,7 @@
     "@types/react-redux": "^5.0.14",
     "@types/recompose": "^0.24.4",
     "@types/redux": "^3.6.0",
+    "@zeit/next-bundle-analyzer": "^0.0.2",
     "@zeit/next-sass": "^0.0.9",
     "@zeit/next-typescript": "^0.0.8",
     "cross-env": "^5.1.3",
