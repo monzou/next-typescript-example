@@ -8,7 +8,7 @@ interface MainLayoutProps {
   children: React.ReactNode
 }
 
-const MainLayout: React.SFC<{}> = (props: MainLayoutProps) => {
+const MainLayout: React.SFC<MainLayoutProps> = (props: MainLayoutProps) => {
   const { children } = props
   const color = '#EE2560'
   const production = process.env.NODE_ENV === 'production'
