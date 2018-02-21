@@ -1,4 +1,10 @@
-import { Story } from '../../api/stories'
+export interface Story {
+  id: number
+  title: string
+  by: string
+  url: string
+  score: number
+}
 
 export interface StoriesState {
   ids: number[]

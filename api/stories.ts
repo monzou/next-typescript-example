@@ -1,6 +1,8 @@
-import { request } from './fetch'
+import Fetcher from './fetcher'
 
-const HOST = 'https://hacker-news.firebaseio.com/v0'
+const fetcher = new Fetcher('https://hacker-news.firebaseio.com/v0', {
+  credentials: 'omit'
+})
 
 export interface Story {
   id: number
@@ -11,7 +13,7 @@ export interface Story {
 }
 
 export function fetchTopStoryIds(): Promise<number[]> {
-  return request('GET', HOST, 'topstories.json')
+  return fetcher.fetch('GET', 'topstories.json').exec()
 }
 
 export async function fetchTopStories(limit: number = 5): Promise<Story[]> {
@@ -20,5 +22,5 @@ export async function fetchTopStories(limit: number = 5): Promise<Story[]> {
 }
 
 export function fetchStory(id: number): Promise<Story> {
-  return request('GET', HOST, `item/${id}.json`)
+  return fetcher.fetch('GET', `item/${id}.json`).exec()
 }
